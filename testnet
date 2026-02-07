@@ -1,0 +1,13 @@
+var fs = require("fs")
+var recognizer = require("ethereum-keyfile-recognizer")
+
+fs.readFile("keyfile.json", (err, data) => {
+  var json = JSON.parse(data)
+  var result = recognizer(json)
+})
+
+/** result
+ *               [ 'web3', 3 ]   web3 (v3) keyfile
+ *  [ 'ethersale', undefined ]   Ethersale keyfile
+ *                        null     invalid keyfile
+ */
